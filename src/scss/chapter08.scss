@@ -1,0 +1,781 @@
+@charset "utf-8";
+
+header {
+    padding: 10px 2%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 96%;
+    background-color: #fff;
+    z-index: 10;
+    border-bottom: 1px solid #e7e7e7;
+    form {
+        width: 90%;
+    }
+    label {
+        width: 100%;
+        display: flex;
+        position: relative;
+        .btn-search {
+            position: absolute;
+            left: 0.2rem;
+            top: 0.25rem;
+            display: inline-block;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+        }
+        input[type='search'] {
+            display: block;
+            width: 100%;
+            padding: 0.4rem 0.4rem 0.4rem 1.8rem;
+            background-color: #e7e7e7;
+            border-radius: 20px;
+            border: none;
+        }
+    } // label종료
+    .btn-cancel {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        color: #007AFF;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+} // header종료
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ff3d51;
+    form {
+        width: 80%;
+    }
+    input[type='search'] {
+        width: 80%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #fff;
+    }
+    button {
+        width: 20%;
+        height: 40px;
+        border-radius: none;
+        background-color: #03c75a;
+        border: none;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+} // search-box종료
+
+.box-wrap {
+    padding-top: 60px;
+} // box-wrap종료
+
+.box {
+    padding: 0 20px;
+    margin-bottom: 2rem;
+    .top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        .left {
+            display: flex;
+            .center {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                .title {
+                    font-size: 0.8rem;
+                    display: flex;
+                    align-items: center;
+                    font-weight: 700;
+                    color: #000;
+                    padding-left: 12px;
+                    height: auto;
+                    width: 94%;
+                }
+                .genre, .subtext {
+                    font-size: 0.6rem;
+                    color: #8E8E93;
+                    display: block;
+                    width: 94%;
+                    padding: 6px 0 0 12px;
+                }
+            } // center종료
+        } // left종료
+        
+        .right {
+            display: flex;
+            align-items: center;
+            button {
+                width: 4rem;
+                height: 2rem;
+                padding: 0;
+                border: 0;
+                background-color: #e7e7e7;
+                border-radius: 20px;
+                color: #007AFF;
+                font-weight: 700;
+            }
+        } // right종료
+    }
+    .middle {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        .rate-box {
+            display: flex;
+            .star-rating {
+                color: #989898;
+                position: relative;
+                unicode-bidi: bidi-override;
+                width: max-content;
+                -webkit-text-fill-color: transparent;
+                -webkit-text-stroke-width: 1.3px;
+                -webkit-text-stroke-color: #8E8E93;
+                margin: 0 10px 0 0;
+                .star_rating_fill {
+                    color: #8E8E93;
+                    padding: 0;
+                    position: absolute;
+                    z-index: 1;
+                    display: flex;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                    -webkit-text-fill-color: #8E8E93;
+                }
+                .star_rating_base {
+                    z-index: 0;
+                    padding: 0;
+                }
+            } // star-rating종료
+            .text-average {
+                color: #8E8E93;
+            }
+        } // rate-box종료
+        .text-genre {
+            color: #8E8E93;
+        }
+        .text-seller-name {
+            color: #8E8E93;
+            max-width: 35vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .bottom {
+        .imgbox {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.6rem;
+            li {
+                list-style: none;
+                width: 33.3%;
+                img {
+                    width: 100%;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    box-sizing: border-box;
+                    display: block;
+                }
+            }
+        } // imgbox종료
+    }
+} // box종료
+
+.detail-wrap {
+    padding: 58px 20px 20px 20px;
+    .top {
+        display: flex;
+        .left {
+            border: 1px solid #ccc;
+            border-radius: 0.6rem;
+            box-sizing: border-box;
+            width: 30%;
+            img {
+                width: 100%;
+                height: inherit;
+                display: block;
+                border-radius: inherit;
+            }
+        } // left종료
+        .right {
+            width: 70%;
+            position: relative;
+            span {
+                display: block;
+            }
+            .title {
+                font-size: 0.8rem;
+                display: flex;
+                align-items: center;
+                font-weight: 700;
+                color: #000;
+                padding-left: 12px;
+                height: auto;
+                width: 94%;
+            }
+            .gubun {
+                font-size: 0.6rem;
+                color: #8E8E93;
+                display: block;
+                width: 94%;
+                padding: 6px 0 0 12px;
+            }
+            button {
+                position: absolute;
+                bottom: 0;
+                left: 12px;
+                width: 4rem;
+                height: 2rem;
+                padding: 0;
+                border: 0;
+                background-color: #007AFF;
+                border-radius: 20px;
+                color: #fff;
+                font-weight: 700;
+            }
+        } // right종료
+    } // top종료
+    .top-sub-menu {
+        margin: 2rem 0;
+        ul {
+          margin: 0;
+          padding: 1rem 0;
+          border-top: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          box-sizing: border-box;
+          overflow-x: auto;
+          display: flex;
+          li {
+            list-style: none;
+            border-right: 1px solid #ccc;
+            box-sizing: border-box;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            &:last-child {
+                border-right: none;
+            }
+            .rate-box {
+                display: flex;
+                justify-content: center;
+                .star-rating {
+                    color: #989898;
+                    position: relative;
+                    unicode-bidi: bidi-override;
+                    width: max-content;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-text-stroke-width: 1.3px;
+                    -webkit-text-stroke-color: #8E8E93;
+                    .star_rating_fill {
+                        color: #8E8E93;
+                        padding: 0;
+                        position: absolute;
+                        z-index: 1;
+                        display: flex;
+                        top: 0;
+                        left: 0;
+                        overflow: hidden;
+                        -webkit-text-fill-color: #8E8E93;
+                    }
+                    .star_rating_base {
+                        z-index: 0;
+                        padding: 0;
+                    }
+                }
+            } // rate-box종료
+            span.sub-text1, span.sub-text2, span.title {
+                display: block;
+                text-align: center;
+                white-space: nowrap;
+                &.title {
+                    color: #ccc;
+                    font-size: 0.6rem;
+                }
+                &.sub-text1 {
+                    color: #666;
+                    font-weight: 700;
+                    padding-top: 0.6rem;
+                    font-size: 0.7rem;
+                }
+                &.sub-text2 {
+                    font-size: 0.65rem;
+                    color: #666;
+                    max-width: 19vw;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            } // span.sub-text1, span.sub-text2종료
+          } // li종료
+        } // ul종료
+    } // top-sub-menu종료
+    .news-box {
+        p {
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .top {
+            display: flex;
+            justify-content: space-between;
+            color: #ccc;
+            font-weight: 300;
+            font-size: 0.7rem;
+        }
+        .text-releaseNote {
+            margin-bottom: 2rem;
+            padding-top: 0.8rem;
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+    } // news-box종료
+    .preview-box {
+        p {
+            margin: 0;
+            font-weight: 600;
+            color: #000;
+            font-size: 1.5rem;
+        }
+        span {
+            font-size: 0.8rem;
+        }
+        ul {
+            margin: 2rem 0 0 0;
+            padding: 0 0 2rem 0;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            li {
+                list-style: none;
+                flex: 0 0 calc((100% - (2rem * 4)) / 1);
+                img {
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    display: block;
+                    width: 100%;
+                }
+            }
+        } // ul종료
+        .description-box {
+            display: flex;
+            position: relative;
+            margin-bottom: 2rem;
+            .text {
+                margin: 1rem 0 2rem 0;
+                padding-top: 1rem;
+                border-top: 1px solid #ccc;
+                box-sizing: border-box;
+                color: #000;
+                font-size: 0.8rem;
+                height: 100px;
+                overflow: hidden;
+                &.more {
+                    overflow: visible;
+                    height: auto;
+                }
+            } // text종료
+            button {
+                color: #007AFF;
+                font-size: 0.8rem;
+                border: 0;
+                padding: 0;
+                background-color: transparent;
+                white-space: nowrap;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                font-weight: 600;
+            }
+        } // description-box종료
+    } // preview-box종료
+    .developer-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        .left {
+            span {
+                display: block;
+                &.text1 {
+                    color: #007AFF;
+                }
+                &.text2 {
+                    font-size: 0.6rem;
+                }
+            }
+        } // left종료
+    } // developer-info종료
+    .review-box {
+        .title {
+            color: #000;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            span {
+                color: #8E8E93;
+            }
+        }
+        .inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left {
+                border: none;
+                .text1 {
+                    font-size: 2rem;
+                    color: #000;
+                    font-weight: 700;
+                }
+            } // left종료
+            .right {
+                .text1 {
+                    .rate-box {
+                        display: flex;
+                        justify-content: end;
+                        .star-rating {
+                            color: #989898;
+                            position: relative;
+                            unicode-bidi: bidi-override;
+                            width: max-content;
+                            -webkit-text-fill-color: transparent;
+                            -webkit-text-stroke-width: 1.3px;
+                            -webkit-text-stroke-color: #8E8E93;
+                            .star_rating_fill {
+                                color: #8E8E93;
+                                padding: 0;
+                                position: absolute;
+                                z-index: 1;
+                                display: flex;
+                                top: 0;
+                                left: 0;
+                                overflow: hidden;
+                                -webkit-text-fill-color: #8E8E93;
+                            }
+                            .star_rating_base {
+                                z-index: 0;
+                                padding: 0;
+                            }
+                        }
+                    } // rate-box종료
+                }
+                .text2 {
+                    font-size: 0.8rem;
+                    padding-top: 0.4rem;
+                    display: block;
+                }
+            } // right종료
+        } // top종료
+    } // review-box종료
+    .info-box {
+        margin-top: 3rem;
+        .title {
+            margin: 0 0 1rem 0;
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+                padding: 0.8rem;
+                border-bottom: 1px solid #ccc;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &.on {
+                    flex-direction: column;
+                    align-items: baseline;
+                    .title {
+                        margin-bottom: 0.8rem;
+                    }
+                } // on종료
+                .title {
+                   font-size: 0.6rem;
+                   color: #ccc;
+                   margin-bottom: 0;
+                } // title종료
+                .text {
+                    color: #000;
+                    font-size: 0.6rem;
+                    &.on + ol {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 0;
+                        width: 100%;
+                        li {
+                            padding: 0;
+                            display: block;
+                            border-bottom: none;
+                            margin-bottom: 0.8rem;
+                            span {
+                                display: block;
+                                &.sub-title {
+                                    color: #000;
+                                    font-weight: 700;    
+                                }
+                                &.sub-text {
+                                    color: #000;
+                                    font-size: 0.8rem;
+                                }
+                            }
+                        } // li종료
+                    } // text.on + ol종료
+                    &.on {
+                        display: none;
+                    }
+                } // text종료
+                button {
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    margin-left: 0.3rem;
+                    background-color: transparent;
+                } // button종료
+                ol {
+                    display: none;
+                } // ol종료
+            } // li종료
+        } // ul종료
+    } // info-box종료
+    &.zoom {
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        position: relative;
+        button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border: none;
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+            color: #007AFF;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .zoom-box {
+            ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                gap: 2rem;
+                overflow-x: auto;
+                li {
+                    list-style: none;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    width: calc((100% - (0.5rem * 5)) / 1);
+                    img {
+                        border: 1px solid #ccc;
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        display: block;
+                        width: 100%;
+                    }
+                } // li종료
+            }
+        } // zoom-box종료
+    } // zoom종료
+} // detail-wrap종료
+
+.detail-top-box {
+    padding: 0 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    background-color: #fff;
+    padding: 12px 0;
+    &.on {
+        background-color: rgba(255,255,255,0.5);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid #ccc;
+        img, .btn-open {
+            opacity: 1;
+            transition: 0.8s;
+        }
+    }
+    .btn-search {
+        border: none;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        color: #007AFF;
+        font-weight: 400;
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+    img {
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+    }
+    .btn-open {
+        border: none;
+        padding: 0;
+        margin: 0;
+        background-color: #007AFF;
+        border-radius: 20px;
+        width: 4rem;
+        height: 2rem;
+        color: #fff;
+        opacity: 0;
+        margin-right: 10px;
+    }        
+} // detail-top-box종료
+
+
+
+// 로딩[s]
+$text_color: #DC554F;
+$stick_color: #DC554F; //Changes the colour of all sticks
+$stick_length: 30px; //Changes length of all sticks
+$stick_distance: -8px; //Changes distance between sticks (will need editing after 30px)
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,700);
+
+.tit-Loadng {  
+ font-family: 'Lato';
+ color:$text_color;
+ text-transform: uppercase;
+ font-size:1em;
+ letter-spacing:1.5px;
+ text-align:center;
+ width:auto;
+ margin-top:20px;
+ margin-left: 8px;
+ -webkit-animation: fade 2s infinite;
+ -moz-animation: fade 2s infinite;
+}
+
+#container { 
+    width:100%;
+    height: 100vh;
+    margin:auto;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.stick {
+ width: $stick_length;
+ height:3px;
+ background:$stick_color;
+ display:inline-block;
+ margin-left:$stick_distance;
+ &:first-child {
+    margin-left: -2px;
+ }
+}
+
+.stick:nth-child(n) {  
+  transform:rotate(30deg);
+  -ms-transform:rotate(30deg); /* IE 9 */
+  -webkit-transform:rotate(30deg); /* Safari and Chrome */
+   -moz-transform:rotate(30deg);
+   -webkit-animation: fall 2s infinite;
+   -moz-animation: fall 2s infinite;
+}
+.stick:nth-child(2n) {  
+   transform:rotate(-30deg);
+  -ms-transform:rotate(-30deg); /* IE 9 */
+  -webkit-transform:rotate(-30deg); /* Safari and Chrome */
+  -moz-transform:rotate(-30deg);
+  -webkit-animation: rise 2s infinite;
+  -moz-animation: rise 2s infinite;
+}
+
+@-webkit-keyframes rise {
+    50% { 
+        transform:rotate(30deg);
+        -ms-transform:rotate(30deg); /* IE 9 */
+        -webkit-transform:rotate(30deg);
+        -moz-transform:rotate(30deg); 
+    }
+}
+@-moz-keyframes rise {
+    50% { 
+        transform:rotate(30deg);
+        -ms-transform:rotate(30deg); /* IE 9 */
+        -webkit-transform:rotate(30deg);
+        -moz-transform:rotate(30deg); 
+    }
+}
+
+@keyframes rise {
+  50% { 
+    transform:rotate(30deg);
+    -ms-transform:rotate(30deg); /* IE 9 */
+    -webkit-transform:rotate(30deg);
+    -moz-transform:rotate(30deg); 
+    }
+}
+
+@-webkit-keyframes fall {
+  50% { 
+    transform:rotate(-30deg);
+    -ms-transform:rotate(-30deg); /* IE 9 */
+    -webkit-transform:rotate(-30deg);
+    -moz-transform:rotate(30deg); 
+    }
+}
+@-moz-keyframes fall {
+ 50% { 
+    transform:rotate(-30deg);
+    -ms-transform:rotate(-30deg); /* IE 9 */
+    -webkit-transform:rotate(-30deg);
+    -moz-transform:rotate(-30deg); 
+ }
+}
+@keyframes fall {
+  50% { 
+    transform:rotate(-30deg);
+    -ms-transform:rotate(-30deg); /* IE 9 */
+    -webkit-transform:rotate(-30deg);
+    -moz-transform:rotate(30deg); 
+  }
+}
+
+@-webkit-keyframes fade {
+  50%{opacity:0.5}
+  100%{opacity:1}
+}
+@-moz-keyframes fade {
+ 50%{opacity:0.5}
+  100%{opacity:1}
+}
+@keyframes fade {
+   50%{opacity:0.5}
+  100%{opacity:1}
+}
+// 로딩[e]
