@@ -1,32 +1,17 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // CORS 허용
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const { term } = req.query;
 
     try {
-        console.log('Received request:', req.query); // 추가
-
-        const response = await axios.get('https://itunes.apple.com/search', {
-        params: {
-            term,
-            entity: 'software',
-            country: 'KR',
-            lang: 'ko_kr'
-        },
-        headers: {
-            'User-Agent': 'React-App'
-        }
-        });
-
-        console.log('iTunes response:', response.data); // 추가
-        console.log('iTunes API 요청:', term);
-        console.log('iTunes API 응답:', response.data);
-
-        res.status(200).json(response.data);
+        const url = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=software&country=KR&lang=ko_kr`;
+        const response = await fetch(url, { headers: { 'User-Agent': 'React-App' } });
+        const data = await response.json();
+        res.status(200).json(data);
     } catch (error) {
-        console.error('Proxy error:', error.message); // 기존 로그
-        console.error('Full error:', error); // 추가 로그
         res.status(500).json({ error: 'Failed to fetch data from iTunes API' });
     }
 }
+
+// force redeploy
