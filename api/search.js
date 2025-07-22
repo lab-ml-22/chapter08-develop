@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     const { term } = req.query;
 
@@ -13,5 +13,3 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Failed to fetch data from iTunes API' });
     }
 }
-
-// force redeploy
