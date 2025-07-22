@@ -40,6 +40,7 @@ const Search = () => {
     useEffect(() => {
         if (resultSearchWord && data) {
             navigate(`/list`, {state: { data }}) // 데이터를 state로 전달해서 list컴포넌트로 이동
+console.log(`data = ${JSON.stringify(data)}`);
         }
     }, [resultSearchWord, data, navigate])
     
