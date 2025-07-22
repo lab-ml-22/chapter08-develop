@@ -23,14 +23,15 @@ const List = () => {
   const { data: cacheData } = useQuery({
     queryKey: ['resultSearchWord', searchQuery],
     queryFn: () => fetchSearchWord(searchQuery),
-    enabled: !!location.state?.data, // location.state?.data가 있을 때에만 실행
+    // enabled: !!location.state?.data, // location.state?.data가 있을 때에만 실행
+    enabled: !!searchQuery // searchQuery가 있을때만 실행
   });
 
-  // 검색어 없이, 주소 걍 복붙해서 새창으로 박을때
+  // list.jsx에서 state가 없을때의 예외처리
   useEffect(() => {
-    if (!location.state?.data) {
+    if (!location.state?.data || !location.state?.searchQuery) {
       alert("잘못된 접근입니다. 메인 페이지로 이동합니다.")
-      navigate("/", { replace: true }) // replace: true로 뒤로 가기 방지
+      navigate("/", { replace: true }) // replace:true가 뒤로가기 방지
     }
   }, [location.state, navigate])
 

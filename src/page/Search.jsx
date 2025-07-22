@@ -21,7 +21,7 @@ const Search = () => {
             queryKey: ['resultSearchWord', resultSearchWord], // resultSearchWord가 변경되면 쿼리 실행
             queryFn: async() => {
                 const result = await fetchSearchWord(resultSearchWord) // 쿼리 함수, 비동기함수로 검색어에 맞는 데이터를 가져옴
-// console.log(`result = ${JSON.stringify(result)}`);
+console.log(`resultSearchWord = ${resultSearchWord}`);
                 return result // 쿼리데이터를 반환
             },
             enabled: !!resultSearchWord, // resultSearchWord가 비어있지 않을 때만 쿼리 실행
@@ -39,8 +39,8 @@ const Search = () => {
 
     useEffect(() => {
         if (resultSearchWord && data) {
-            navigate(`/list`, {state: { data }}) // 데이터를 state로 전달해서 list컴포넌트로 이동
-console.log(`data = ${JSON.stringify(data)}`);
+            navigate(`/list`, {state: { data, searchQuery: resultSearchWord }}) // 데이터를 state로 전달해서 list컴포넌트로 이동 및 검색어도 함께 전달
+// console.log(`data = ${JSON.stringify(data)}`);
         }
     }, [resultSearchWord, data, navigate])
     

@@ -20,6 +20,8 @@ export default async function handler(req, res) {
         });
 
         console.log('iTunes response:', response.data); // 추가
+        console.log('iTunes API 요청:', term);
+        console.log('iTunes API 응답:', response.data);
 
         res.status(200).json(response.data);
     } catch (error) {
