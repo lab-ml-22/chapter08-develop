@@ -39,6 +39,8 @@ console.log(`resultSearchWord = ${resultSearchWord}`);
 
     useEffect(() => {
         if (resultSearchWord && data) {
+console.log('navigate로 넘기는 data:', data);
+console.log('navigate로 넘기는 searchQuery:', resultSearchWord);
             navigate(`/list`, {state: { data, searchQuery: resultSearchWord }}) // 데이터를 state로 전달해서 list컴포넌트로 이동 및 검색어도 함께 전달
 // console.log(`data = ${JSON.stringify(data)}`);
         }

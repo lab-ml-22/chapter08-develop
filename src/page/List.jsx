@@ -17,7 +17,7 @@ const List = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const searchQuery = location.state?.data?.searchQuery // data객체안에있는 searchQuery속성(검색어가 필요할때)
+  const searchQuery = location.state?.searchQuery // data객체안에있는 searchQuery속성(검색어가 필요할때)
   const dataFromState = location.state?.data // data객체(검색한 데이터관련 전체가 필요할때)
 
   const { data: cacheData } = useQuery({
@@ -29,11 +29,12 @@ const List = () => {
 
   // list.jsx에서 state가 없을때의 예외처리
   useEffect(() => {
-    if (!location.state?.data || !location.state?.searchQuery) {
+    // Header에서 새로운 검색을 하는 경우를 제외하고, 초기 접근 시에만 체크
+    if (!location.state?.data && !location.state?.searchQuery && !searchQuery) {
       alert("잘못된 접근입니다. 메인 페이지로 이동합니다.")
       navigate("/", { replace: true }) // replace:true가 뒤로가기 방지
     }
-  }, [location.state, navigate])
+  }, [location.state, navigate, searchQuery])
 
   // if (!location.state?.data) return null; // location.state가 없으면 렌더링하지 않음
   
@@ -55,23 +56,28 @@ const List = () => {
     if (isDataLoaded) {      
       const savedScrollPosition = localStorage.getItem('scrollPosition')
       const savedCurrentPage = localStorage.getItem('currentPage')
+      console.log('저장된 스크롤 위치:', savedScrollPosition, '저장된 페이지:', savedCurrentPage)
+      
       // 로컬스토리지에서 가져온 스크롤 위치와 현재 페이지 번호가 유효하면 그 값으로 설정
       if (savedScrollPosition !== null && !isNaN(savedScrollPosition) && savedCurrentPage !== null && !isNaN(savedCurrentPage)) {
-        // scrollPositionRef.current = parseInt(savedScrollPosition, 10)
         const scrollPosition = parseInt(savedScrollPosition, 10)
         const restoredPageNumber = parseInt(savedCurrentPage, 10)
 
+        console.log('스크롤 복원 시도:', scrollPosition, '페이지:', restoredPageNumber)
+        
         setCurrentPage(restoredPageNumber)
         setDisplayData(initialData.slice(0, restoredPageNumber * 5))
 
+        // DOM이 업데이트된 후 스크롤 위치 복원
         setTimeout(() => {
-          // window.scrollTo(0, scrollPositionRef.current)
           window.scrollTo(0, scrollPosition)
-console.log(`scrollPosition = ${JSON.stringify(scrollPosition)}`)
+          console.log(`스크롤 위치 복원 완료: ${scrollPosition}`)
+          // 복원 후 로컬스토리지 정리
           localStorage.removeItem('scrollPosition')
           localStorage.removeItem('currentPage')
-        }, 300)
+        }, 100) // 시간을 줄여서 더 빠르게 복원
       } else {
+        console.log('저장된 스크롤 정보가 없어서 처음부터 표시')
         setDisplayData(initialData.slice(0, 5))
         window.scrollTo(0, 0) // 리스트상단 검색영역에서 검색어 입력시에 스크롤top 0으로
       }
@@ -130,27 +136,34 @@ console.log(`displayData = ${JSON.stringify(displayData)}`);
     }
   }, [initialData, dataFromState])
 
- // 검색어가 바뀌면 로컬스토리지 초기화
+ // 검색어가 바뀔 때 로컬스토리지 초기화 (새로운 검색일 때만)
   useEffect(() => {
-    if (searchQuery !== location.state?.data?.searchQuery) {
+    // 새로운 검색어로 검색할 때만 초기화
+    if (searchQuery && searchQuery !== location.state?.searchQuery) {
       localStorage.removeItem('scrollPosition')
       localStorage.removeItem('currentPage')
       setCurrentPage(1)
       setDisplayData([])
       scrollPositionRef.current = null
     }
-  }, [searchQuery, location.state?.data?.searchQuery])
+  }, [searchQuery, location.state?.searchQuery])
 
   const onDetail = (idx, item) => {
     const scrollPosition = window.scrollY
-    localStorage.setItem('scrollPosition', scrollPosition)
-    localStorage.setItem('currentPage', currentPage)
+    console.log('스크롤 위치 저장:', scrollPosition, '현재 페이지:', currentPage)
+    localStorage.setItem('scrollPosition', scrollPosition.toString())
+    localStorage.setItem('currentPage', currentPage.toString())
 
     navigate(`/detail`, {
       state: { idx, item }
     })
   }
-  
+
+console.log('dataFromState:', dataFromState);
+console.log('searchQuery:', searchQuery);
+console.log('cacheData:', cacheData);
+console.log('initialData:', initialData);
+console.log('location.state:', location.state);
   return (
     <>
       <Header />
